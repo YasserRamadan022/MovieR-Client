@@ -1,0 +1,132 @@
+<main class="min-h-screen bg-deep-black">
+
+<!-- Hero Section - Recommendation Focus -->
+<section class="relative h-[80vh] md:h-[90vh] overflow-hidden">
+  <!-- Background Image Container -->
+  <div class="absolute inset-0">
+    <!-- Image - Base Layer -->
+    <div 
+      class="absolute inset-0 bg-cover bg-no-repeat"
+      [style.background-image]="'url(' + featuredMovie.imageUrl + ')'"
+      [style.background-position]="'center 20%'"
+      [style.background-size]="'cover'"
+    ></div>
+    
+    <!-- Gradient Overlays -->
+    <!-- Left to right gradient (for text readability) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-deep-black/50 via-deep-black/20 to-transparent"></div>
+    <!-- Bottom fade effect (stronger) -->
+    <div class="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/70 via-deep-black/30 to-transparent"></div>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+    <div class="max-w-2xl">
+      <h1 class="text-4xl md:text-6xl font-bold text-text-soft mb-4 leading-tight">
+        Discover Your Next Favorite Movie
+      </h1>
+      <p class="text-text-soft/80 text-lg md:text-xl mb-6 leading-relaxed">
+        Get personalized movie recommendations based on your preferences, ratings, and viewing history.
+      </p>
+      <div class="flex gap-4">
+        <button class="px-6 py-3 bg-steel-blue hover:bg-steel-blue/80 text-text-soft font-semibold rounded-md transition-all duration-200">
+          Get Recommendations
+        </button>
+        <button class="px-6 py-3 bg-slate-dark hover:bg-slate-dark/80 text-text-soft font-semibold rounded-md border border-steel-blue/30 transition-all duration-200">
+          Set Preferences
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Personalized Recommendations Section -->
+  <section class="py-12 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-text-soft">Popular Movies</h2>
+        <button class="text-steel-blue hover:text-text-soft text-sm font-medium transition-colors duration-200">
+          See All
+        </button>
+      </div>
+      <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+        @for (movie of recommendedMovies; track movie.id) {
+          <div class="flex-shrink-0 w-48 md:w-56 group cursor-pointer">
+            <div class="relative overflow-hidden rounded-lg mb-3">
+              <img 
+                [src]="movie.imageUrl" 
+                [alt]="movie.title"
+                class="w-full aspect-[2/3] object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-deep-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="absolute bottom-2 right-2 bg-slate-dark/90 text-text-soft text-sm font-semibold px-2 py-1 rounded">
+                {{ movie.rating }}
+              </div>
+              <div class="absolute top-2 left-2 bg-steel-blue/90 text-text-soft text-xs font-semibold px-2 py-1 rounded">
+                Match: {{ movie.matchScore }}%
+              </div>
+            </div>
+            <h3 class="text-text-soft font-medium text-sm md:text-base group-hover:text-steel-blue transition-colors duration-200 mb-1">
+              {{ movie.title }}
+            </h3>
+            <p class="text-text-soft/60 text-xs">Based on your preferences</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Trending Movies Section -->
+  <section class="py-12 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-text-soft mb-6">Popular Actors</h2>
+      <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+        @for (actor of popularActors; track actor.id) {
+          <div class="flex-shrink-0 w-48 md:w-56 group cursor-pointer">
+            <div class="relative overflow-hidden rounded-lg mb-3">
+              <img 
+                [src]="actor.imageUrl" 
+                [alt]="actor.name"
+                class="w-full aspect-[2/3] object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-deep-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="absolute bottom-2 right-2 bg-slate-dark/90 text-text-soft text-sm font-semibold px-2 py-1 rounded">
+                
+              </div>
+            </div>
+            <h3 class="text-text-soft font-medium text-sm md:text-base group-hover:text-steel-blue transition-colors duration-200">
+              {{ actor.name }}
+            </h3>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Rated Section -->
+  <section class="py-12 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-text-soft mb-6">Popular Directors</h2>
+      <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+        @for (director of popularDirectors; track director.id) {
+          <div class="flex-shrink-0 w-48 md:w-56 group cursor-pointer">
+            <div class="relative overflow-hidden rounded-lg mb-3">
+              <img 
+                [src]="director.imageUrl" 
+                [alt]="director.name"
+                class="w-full aspect-[2/3] object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-deep-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="absolute bottom-2 right-2 bg-slate-dark/90 text-text-soft text-sm font-semibold px-2 py-1 rounded">
+                
+              </div>
+            </div>
+            <h3 class="text-text-soft font-medium text-sm md:text-base group-hover:text-steel-blue transition-colors duration-200">
+              {{ director.name }}
+            </h3>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+</main>
