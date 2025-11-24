@@ -1,12 +1,12 @@
 <header 
-  [class.scrolled]="isScrolled"
+  [class.scrolled]="isScrolled()"
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
 >
 
   <!-- Completely Transparent - No Background, No Blur -->
   <div 
     class="absolute inset-0 border-b border-border-dark/10 transition-all duration-300"
-    [ngClass]="{'bg-deep-black/95 backdrop-blur-md': isScrolled}"
+    [ngClass]="{'bg-deep-black/95 backdrop-blur-md': isScrolled() || !isHomeRoute()}"
   ></div>
 
   <nav class="relative container mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,14 +14,6 @@
       
 <a routerLink="/" class="flex items-center space-x-4 group cursor-pointer relative z-10">
     <div class="absolute -inset-2 bg-slate-dark opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-lg blur-sm"></div>
-    
-  <!-- <div class="relative flex items-center">
-    <span class="text-text-soft font-normal text-4xl md:text-5xl leading-none" 
-          style="font-family: 'Inter', 'Roboto', 'Helvetica Neue', sans-serif; font-weight: 400; letter-spacing: -0.1em;">
-      WM
-    </span>
-  </div> -->
-  
     
     <!-- Text - Watch Movie -->
     <div class="flex flex-col">
@@ -38,6 +30,7 @@
           <a 
             [routerLink]="item.route" 
             routerLinkActive="bg-slate-dark text-text-soft border border-steel-blue/20"
+            [routerLinkActiveOptions]="{ exact: true }"
             class="relative px-5 py-2.5 rounded-md text-steel-blue hover:text-text-soft transition-all duration-200 font-medium text-sm xl:text-base group"
           >
             <!-- Subtle Hover Background -->
@@ -111,6 +104,7 @@
             [routerLink]="item.route"
             (click)="toggleMenu()"
             routerLinkActive="bg-slate-dark text-text-soft border-l-2 border-steel-blue"
+            [routerLinkActiveOptions]="{ exact: true }"
             class="block px-4 py-3 rounded-md text-steel-blue hover:text-text-soft hover:bg-slate-dark/50 transition-all duration-200 font-medium"
           >
             {{ item.label }}

@@ -1,0 +1,40 @@
+<main class="min-h-screen bg-deep-black">
+  <section class="py-12 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="mb-12 md:mb-16 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text-soft mb-6 tracking-tight">
+          Discover Genres
+        </h1>
+        <p class="text-steel-blue/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+          Dive into a world of cinematic experiences. From action-packed thrillers to heartwarming dramas, find your perfect movie match.
+        </p>
+      </header>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        @for (genre of genres(); track genre.id) {
+          <article class="group cursor-pointer">
+            <div class="relative overflow-hidden rounded-lg mb-3 transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl group-hover:shadow-steel-blue/10">
+              <div 
+                class="w-full aspect-[4/3] bg-cover bg-center transition-all duration-300 group-hover:brightness-125 group-hover:contrast-110"
+                [style.background-image]="'url(' + genre.imageUrl + ')'"
+              ></div>
+              
+              <div class="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/60 to-transparent group-hover:from-deep-black/50 group-hover:via-transparent transition-all duration-300"></div>
+              
+              <div class="absolute inset-0 border-2 border-transparent group-hover:border-steel-blue/30 rounded-lg transition-all duration-300"></div>
+              
+              <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                <h2 class="text-text-soft font-medium text-sm md:text-base group-hover:text-steel-blue group-hover:drop-shadow-lg transition-all duration-300 mb-1">
+                  {{ genre.name }}
+                </h2>
+                <p class="text-text-soft/60 text-xs opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1 transition-all duration-300">
+                  
+                </p>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+</main>

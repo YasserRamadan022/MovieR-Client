@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, DestroyRef, HostListener, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import { sign } from 'node:crypto';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -9,23 +11,51 @@ import { RouterModule } from '@angular/router';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {
+export class Header implements  OnInit {
+  private destroyRef = inject(DestroyRef);
+  private router = inject(Router);
   navItems = [
-    { label: 'Home', route: '/' },
+    { label: 'Home', route: '/home' },
     { label: 'For You', route: '/foryou'},
     { label: 'Trending', route: '/trending' },
     { label: 'Genres', route: '/genres' },
-    { label: 'My List', route: '/watchlist' }
+    { label: 'Actors', route: '/actors' },
+    { label: 'Directors', route: '/directors' }
   ];
 
   isMenuOpen = false;
   isSearchOpen = false;
+  isHomeRoute = signal(false);
   searchQuery = '';
-  isScrolled = false;
+  isScrolled = signal(false);
+
+  ngOnInit(){
+    this.checkRoute();
+
+    const subscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.checkRoute();
+      });
+
+      this.destroyRef.onDestroy(() =>{
+        subscription.unsubscribe();
+      })
+  }
+
+  private checkRoute() {
+    if(this.router.url === '/home' || this.router.url === '/')
+      this.isHomeRoute.set(true);
+    else
+      this.isHomeRoute.set(false);
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.isScrolled = window.scrollY > 10;
+    if(window.scrollY > 10)
+      this.isScrolled.set(true);
+    else
+      this.isScrolled.set(false);
   }
 
   toggleMenu() {
