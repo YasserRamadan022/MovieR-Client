@@ -1,49 +1,67 @@
 <!-- movie-actions.component.html -->
 <section class="movie-actions w-full" aria-label="Movie actions">
   <div class="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-    <!-- Upvote Button -->
-    <button 
-      type="button"
-      class="group flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 bg-steel-blue/10 hover:bg-steel-blue/15 border border-steel-blue/20 hover:border-steel-blue/30 rounded-lg text-text-soft text-xs sm:text-sm md:text-base font-medium transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
-      aria-label="Upvote this movie"
-    >
-      <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 stroke-2 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-      </svg>
-      <span class="font-semibold min-w-[1.25rem] sm:min-w-[1.5rem] text-center">0</span>
-    </button>
+    <!-- Upvote/Downvote (Reddit Style) -->
+    <div class="flex items-center gap-1 sm:gap-1.5 bg-steel-blue/10 border border-steel-blue/20 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2">
+      <!-- Upvote Button -->
+      <button 
+        type="button"
+        class="group flex items-center justify-center p-1 sm:p-1.5 rounded hover:bg-steel-blue/20 transition-colors duration-200"
+        aria-label="Upvote this movie"
+      >
+        <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-text-soft group-hover:text-steel-blue transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M10 19a3.966 3.966 0 01-3.96-3.962V10.98H2.838a1.731 1.731 0 01-1.605-1.073 1.734 1.734 0 01.377-1.895L9.364.254a.925.925 0 011.272 0l7.754 7.759c.498.499.646 1.242.376 1.894-.27.652-.9 1.073-1.605 1.073h-3.202v4.058A3.965 3.965 0 019.999 19H10zM2.989 9.179H7.84v5.731c0 1.13.81 2.163 1.934 2.278a2.163 2.163 0 002.386-2.15V9.179h4.851L10 2.163 2.989 9.179z"></path>
+        </svg>
+      </button>
+      
+      <!-- Vote Count -->
+      <span class="text-xs sm:text-sm md:text-base font-semibold text-text-soft min-w-[2rem] sm:min-w-[2.5rem] text-center px-1">
+        0
+      </span>
+      
+      <!-- Downvote Button -->
+      <button 
+        type="button"
+        class="group flex items-center justify-center p-1 sm:p-1.5 rounded hover:bg-steel-blue/20 transition-colors duration-200"
+        aria-label="Downvote this movie"
+      >
+        <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-text-soft group-hover:text-red-400 transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M10 1a3.966 3.966 0 013.96 3.962v4.058h3.202a1.731 1.731 0 011.605 1.073 1.734 1.734 0 01-.377 1.895L10.636 19.746a.925.925 0 01-1.272 0L1.61 11.987c-.498-.499-.646-1.242-.376-1.894.27-.652.9-1.073 1.605-1.073h3.202V4.962A3.965 3.965 0 0110 1zm7.011 10.821H12.16V6.09c0-1.13-.81-2.163-1.934-2.278a2.163 2.163 0 00-2.386 2.15v5.168H3.989L10 17.837l6.011-6.016z"></path>
+        </svg>
+      </button>
+    </div>
 
-    <!-- Favorite Button -->
+    <!-- Favorite Button (Heart Icon) -->
     <button 
       type="button"
       class="group flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 bg-steel-blue/10 hover:bg-steel-blue/15 border border-steel-blue/20 hover:border-steel-blue/30 rounded-lg text-text-soft text-xs sm:text-sm md:text-base font-medium transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
       aria-label="Add to favorites"
     >
-      <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 stroke-2 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
       </svg>
       <span class="hidden xs:inline">Favorite</span>
     </button>
 
-    <!-- Interest Button -->
+    <!-- Interest Button (Bookmark Icon) -->
     <button 
       type="button"
       class="group flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 bg-steel-blue/10 hover:bg-steel-blue/15 border border-steel-blue/20 hover:border-steel-blue/30 rounded-lg text-text-soft text-xs sm:text-sm md:text-base font-medium transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
       aria-label="Mark as interested"
     >
-      <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 stroke-2 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
       </svg>
       <span class="hidden xs:inline">Interested</span>
     </button>
 
-    <!-- Rate Button -->
+    <!-- Rate Button (Star Icon) -->
     <button 
       type="button"
       class="group flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 bg-steel-blue/10 hover:bg-steel-blue/15 border border-steel-blue/20 hover:border-steel-blue/30 rounded-lg text-text-soft text-xs sm:text-sm md:text-base font-medium transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
       aria-label="Rate this movie"
     >
-      <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 stroke-2 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
       </svg>
       <span class="hidden xs:inline">Rate</span>

@@ -27,14 +27,12 @@
             </span>
           }
           @if (averageRating() !== null) {
-            <div class="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-md">
-              <svg class="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" viewBox="0 0 20 20" aria-hidden="true">
-                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-              </svg>
-              <span class="text-sm sm:text-base md:text-lg font-semibold text-blue-400">
-                {{ averageRating()!.toFixed(1) }}
-              </span>
-            </div>
+              <div class="metadata-item rating-badge">
+                <svg class="rating-icon" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                </svg>
+                <span>{{ averageRating()!.toFixed(1) }}</span>
+              </div>
           }
         </div>
 
