@@ -1,0 +1,25 @@
+<!-- movie-details.component.html -->
+<main class="min-h-screen bg-deep-black w-full">
+  @if (isLoading()) {
+    <div class="flex items-center justify-center min-h-screen px-4">
+      <p class="text-base sm:text-lg md:text-xl text-steel-blue/80">Loading movie details...</p>
+    </div>
+  } @else if (MovieDetails()) {
+    <!-- Hero Section -->
+    <section class="py-6 sm:py-8 md:py-10 lg:py-12 bg-deep-black">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <app-movie-hero [movie]="MovieDetails()!" />
+      </div>
+    </section>
+
+    <!-- Cast & Crew Section -->
+    <app-movie-crew 
+      [actors]="MovieDetails()!.actors || []" 
+      [director]="MovieDetails()!.director || null"
+    />
+  } @else {
+    <div class="flex items-center justify-center min-h-screen px-4">
+      <p class="text-base sm:text-lg md:text-xl text-steel-blue/80">Movie not found.</p>
+    </div>
+  }
+</main>

@@ -12,7 +12,7 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
         @for (genre of genres(); track genre.id) {
-          <article class="group cursor-pointer">
+          <article class="group cursor-pointer" [routerLink]="['/genres', genre.name, genre.id]">
             <div class="relative overflow-hidden rounded-lg mb-3 transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl group-hover:shadow-steel-blue/10">
               <div 
                 class="w-full aspect-[4/3] bg-cover bg-center transition-all duration-300 group-hover:brightness-125 group-hover:contrast-110"

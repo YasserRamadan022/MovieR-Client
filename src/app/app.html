@@ -1,7 +1,8 @@
+<!-- app.html -->
 <div class="flex flex-col min-h-screen bg-deep-black">
   <app-header />
-    <main [class.pt-20]="!isHomeRoute()" [class.md:pt-24]="!isHomeRoute()" class="flex-grow">
-        <router-outlet />
-    </main>
+  <main [class.pt-20]="!isHomeRoute()" [class.md:pt-24]="!isHomeRoute()" class="flex-grow bg-deep-black">
+    <router-outlet />
+  </main>
   <app-footer />
 </div>

@@ -1,0 +1,166 @@
+/* movie-details.component.css */
+
+.movie-details-hero {
+  /* Hero section container */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.cast-crew-section {
+  /* Cast and crew section */
+  background-color: rgba(15, 23, 42, 0.5); /* slate-900/50 */
+}
+
+.cast-crew-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .cast-crew-grid {
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+  }
+}
+
+/* Cast Section */
+.cast-section {
+  /* Container for actors list */
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgb(226, 232, 240); /* text-soft */
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(148, 163, 184, 0.2); /* steel-blue/20 */
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 1.875rem;
+  }
+}
+
+.cast-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .cast-list {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 2rem;
+  }
+}
+
+.cast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.cast-item:hover {
+  transform: translateY(-4px);
+}
+
+.cast-image-container {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  background-color: rgba(148, 163, 184, 0.1);
+}
+
+.cast-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.cast-item:hover .cast-image {
+  transform: scale(1.05);
+}
+
+.cast-info {
+  width: 100%;
+}
+
+.cast-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(226, 232, 240); /* text-soft */
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.cast-role {
+  font-size: 0.75rem;
+  color: rgba(148, 163, 184, 0.7); /* steel-blue/70 */
+  line-height: 1.3;
+}
+
+/* Director Section */
+.director-section {
+  /* Container for director info */
+}
+
+.director-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.director-item:hover {
+  transform: translateY(-4px);
+}
+
+.director-image-container {
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 2 / 3;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background-color: rgba(148, 163, 184, 0.1);
+}
+
+.director-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.director-item:hover .director-image {
+  transform: scale(1.05);
+}
+
+.director-info {
+  width: 100%;
+}
+
+.director-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: rgb(226, 232, 240); /* text-soft */
+  line-height: 1.3;
+}
+
+/* Empty State */
+.empty-state {
+  color: rgba(148, 163, 184, 0.6); /* steel-blue/60 */
+  font-size: 0.875rem;
+  font-style: italic;
+  padding: 1rem 0;
+}

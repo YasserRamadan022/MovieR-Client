@@ -1,0 +1,63 @@
+<!-- movie-hero.component.html -->
+<section class="movie-hero w-full bg-deep-black">
+  <div class="w-full bg-deep-black">
+    <!-- Movie Poster and Content Grid -->
+    <div class="flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+      <!-- Movie Poster -->
+      <div class="flex-shrink-0 w-full max-w-[180px] xs:max-w-[200px] sm:max-w-[250px] md:max-w-[280px] lg:max-w-[300px] xl:max-w-[320px] mx-auto md:mx-0">
+        <img 
+          [src]="posterUrl()" 
+          [alt]="title() + ' movie poster'"
+          class="w-full aspect-[2/3] object-cover rounded-lg md:rounded-xl shadow-2xl"
+        />
+      </div>
+
+      <!-- Movie Info Section -->
+      <div class="flex-1 flex flex-col gap-4 sm:gap-5 md:gap-6">
+        <!-- Movie Title -->
+        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-text-soft leading-tight">
+          {{ title() }}
+        </h1>
+
+        <!-- Movie Metadata (Release Year, Rating, etc.) -->
+        <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+          @if (releaseYear()) {
+            <span class="text-sm sm:text-base md:text-lg text-steel-blue/80 font-medium">
+              {{ releaseYear() }}
+            </span>
+          }
+          @if (averageRating() !== null) {
+            <div class="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-md">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+              </svg>
+              <span class="text-sm sm:text-base md:text-lg font-semibold text-blue-400">
+                {{ averageRating()!.toFixed(1) }}
+              </span>
+            </div>
+          }
+        </div>
+
+        <!-- Movie Description -->
+        @if (description()) {
+          <p class="text-sm sm:text-base md:text-lg text-steel-blue/90 leading-relaxed max-w-4xl">
+            {{ description() }}
+          </p>
+        }
+
+        <!-- Movie Actions Component -->
+        <app-movie-actions />
+
+        <!-- Trailer Section -->
+        @if (trailerUrl()) {
+          <div class="mt-4 sm:mt-6 md:mt-8">
+            <app-movie-trailer 
+              [trailerUrl]="trailerUrl()" 
+              [title]="title() + ' Trailer'"
+            />
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

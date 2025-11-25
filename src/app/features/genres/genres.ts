@@ -1,12 +1,14 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { GenresService } from '../../core/services/genres-service.service';
 import { type Genre } from '../../core/models/genre.model';
-import { type GetAllResponse } from '../../core/models/getall.model';
+import { type GetAllAPIResponse } from '../../core/models/getall.model';
+
 
 @Component({
   selector: 'app-genres',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './genres.html',
   styleUrl: './genres.css',
 })
@@ -24,7 +26,7 @@ export class Genres implements OnInit {
     this.isLoading.set(true);
 
     const subscription = this.GenreService.getAllGenres(1,20).subscribe({
-      next: (data: GetAllResponse<Genre>) => {
+      next: (data: GetAllAPIResponse<Genre>) => {
         if(data.success && data.statusCode == 200){
           this.genres.set(data.data.data);
         }

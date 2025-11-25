@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { Home } from './features/home/home';
-import { Genres } from './features/genres/genres';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', component: Home },
-    { path: 'genres', component: Genres },
+    { path: 'home', loadComponent: () => import('./features/home/home').then(m => m.Home) },
+    { path: 'genres', loadComponent: () => import('./features/genres/genres').then(m => m.Genres) },
+    { path: 'genres/:genreName/:genreId', loadComponent: () => import('./features/genre-movies/genre-movies').then(m => m.GenreMovies) },
+    { path: 'movie/:movieId', loadComponent: () => import('./features/movie-details/movie-details').then(m => m.MovieDetails) },
     { path: '**', redirectTo: '/home' }
 ];
