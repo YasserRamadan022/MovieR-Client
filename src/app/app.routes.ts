@@ -16,5 +16,15 @@ export const routes: Routes = [
         loadComponent: () => import('./features/profile/profile').then(m => m.Profile),
         data: { type: 'director' }
     },
+    {
+        path: 'actors',
+        loadComponent: () => import('./features/actors-directors/actors-directors').then(m => m.ActorsDirectors),
+        data: { type: 'actor'}
+    },
+    {
+        path: 'directors',
+        loadComponent: () => import('./features/actors-directors/actors-directors').then(m => m.ActorsDirectors),
+        data: { type: 'director'}
+    },
     { path: '**', redirectTo: '/home' }
 ];
