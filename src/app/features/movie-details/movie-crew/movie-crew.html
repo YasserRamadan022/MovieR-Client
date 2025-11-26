@@ -43,7 +43,7 @@
         Director
       </h2>
       @if (director()) {
-        <div class="group cursor-pointer flex flex-col items-start w-fit">
+        <div class="group cursor-pointer flex flex-col items-start w-fit" [routerLink]="['/director', director().id]">
           <div class="relative w-28 h-28 xs:w-32 xs:h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 rounded-full overflow-hidden mb-4 sm:mb-5 bg-gradient-to-br from-steel-blue/20 to-slate-800/40 shadow-lg ring-2 ring-steel-blue/20 transition-all duration-300 hover:shadow-xl hover:shadow-steel-blue/20 hover:ring-steel-blue/40">
             <img 
               [src]="director()!.imageUrl" 
